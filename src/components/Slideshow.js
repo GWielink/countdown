@@ -10,7 +10,6 @@ export default class Slideshow extends Component {
 
         this.state = {
             slides: slides.map(slide => Object.assign(slide, {}, {loading: true})),
-            loading: true,
             index: 0,
         };
     }
@@ -30,9 +29,9 @@ export default class Slideshow extends Component {
     }
 
     handleDataLoaded = (index) => {
-        this.setState({
-            slides: this.state.slides.map((slide, i) => index === i ? Object.assign({}, slide, {loading: false}) : slide),
-        })
+        this.setState( state => ({
+            slides: state.slides.map((slide, i) => index === i ? Object.assign({}, slide, {loading: false}) : slide),
+        }))
     }
 
     prepareSlides = () => {
@@ -61,6 +60,8 @@ export default class Slideshow extends Component {
     render () {
         const { index, slides } = this.state;
         const loadedSlides = slides.filter(slide => !slide.loading);
+
+        console.log(slides);
 
         if (slides.length > loadedSlides.length) {
             return <Loading message={`Preparing slides... (${loadedSlides.length}/${slides.length})`} />;

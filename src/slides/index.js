@@ -1,3 +1,6 @@
+// Books
+import prepareBooks from './Books/prepare';
+import renderBooks from './Books/render';
 // Photo
 import preparePhoto from './Photo/prepare';
 import renderPhoto from './Photo/render';
@@ -7,9 +10,19 @@ import renderFlickr from './Flickr/render';
 // Calendar
 import prepareCalendar from '../slides/Calendar/prepare';
 import renderCalendar from '../slides/Calendar/render';
-
+// Quote
+import prepareQuote from '../slides/Quote/prepare';
+import renderQuote from '../slides/Quote/render';
 
 const slides = [{
+    type: 'QUOTE_SLIDE',
+    prepare: prepareQuote,
+    render: renderQuote,
+}, {
+    type: 'BOOKS_SLIDE',
+    prepare: prepareBooks,
+    render: renderBooks,
+},{
     type: 'FLICKR_SLIDE',
     prepare: prepareFlickr,
     render: renderFlickr,
